@@ -40,7 +40,6 @@ public final class DefaultStream<T>
             {
                 if (tail == null)
                 {
-                    state.tail();
                     tail = new DefaultStream<T>(state.tail());
                 }
             }
