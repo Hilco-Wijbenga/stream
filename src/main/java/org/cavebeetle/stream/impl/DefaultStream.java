@@ -60,18 +60,6 @@ public final class DefaultStream<T>
     }
 
     @Override
-    public Iterator<T> toIterator()
-    {
-        return new StreamIterator<T>(this);
-    }
-
-    @Override
-    public Iterable<T> toIterable()
-    {
-        return new StreamIterable<T>(this);
-    }
-
-    @Override
     public <U> Stream<U> map(final Stream.Map<T, U> map)
     {
         return new DefaultStream<U>(new MappedStreamState<T, U>(this, map));
@@ -87,5 +75,11 @@ public final class DefaultStream<T>
     public Stream<T> insert(final Stream<T> stream)
     {
         return new DefaultStream<T>(new ConcatenatedStreamState<T>(stream, this));
+    }
+
+    @Override
+    public Iterator<T> iterator()
+    {
+        return new StreamIterator<T>(this);
     }
 }

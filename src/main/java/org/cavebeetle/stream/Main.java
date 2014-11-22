@@ -9,9 +9,9 @@ public final class Main
     {
         final StreamApi streamApi = new DefaultStreamApi();
         final File dir = new File("src/main/java");
-        final File file = new File(dir, "org/cavebeetle/stream/TextFileStream.java");
+        final File file = new File(dir, "org/cavebeetle/stream/Main.java");
         final Stream<Line> stream = streamApi.newTextFileStream(file);
-        for (final Line line : stream.toIterable())
+        for (final Line line : stream)
         {
             System.out.println(line);
         }

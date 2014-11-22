@@ -1,8 +1,8 @@
 package org.cavebeetle.stream;
 
-import java.util.Iterator;
-
 public interface Stream<T>
+    extends
+        Iterable<T>
 {
     public interface Map<IN, OUT>
     {
@@ -16,10 +16,6 @@ public interface Stream<T>
     boolean isEmpty();
 
     void abort();
-
-    Iterator<T> toIterator();
-
-    Iterable<T> toIterable();
 
     <U> Stream<U> map(Map<T, U> map);
 
