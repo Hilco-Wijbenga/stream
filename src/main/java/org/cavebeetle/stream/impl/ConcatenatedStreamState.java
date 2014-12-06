@@ -10,7 +10,9 @@ public final class ConcatenatedStreamState<T>
     private final Stream<T> firstStream;
     private final Stream<T> secondStream;
 
-    public ConcatenatedStreamState(final Stream<T> firstStream, final Stream<T> secondStream)
+    public ConcatenatedStreamState(
+        final Stream<T> firstStream,
+        final Stream<T> secondStream)
     {
         this.firstStream = firstStream;
         this.secondStream = secondStream;

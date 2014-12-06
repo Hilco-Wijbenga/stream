@@ -9,27 +9,28 @@ public final class DefaultStreamApi
     implements
         StreamApi
 {
-    @Override
-    public <T> Stream<T> newInfiniteStreamOf(final T element)
+    private interface Lazy
     {
-        return new DefaultStream<T>(new InfiniteStreamState<T>(element));
+        Stream<?> EMPTY_STREAM = new DefaultStream<Object>(new EmptyStreamState<Object>());
     }
 
     @Override
-    public <T> Stream<T> newSingletonStream(final T element)
-    {
-        return new DefaultStream<T>(new SingletonStreamState<T>(element));
-    }
-
-    @Override
-    public <T> Stream<T> newIterableStream(final Iterable<T> iterable)
+    public <T> Stream<T> newStreamFromIterable(final Iterable<T> iterable)
     {
         return new DefaultStream<T>(new IterableStreamState<T>(iterable));
     }
 
     @Override
-    public Stream<Line> newTextFileStream(final File textFile)
+    public Stream<Line> newStreamFromTextFile(final File textFile)
     {
         return new DefaultStream<Line>(new TextFileStreamState(textFile));
+    }
+
+    @Override
+    public <T> Stream<T> newEmptyStream()
+    {
+        @SuppressWarnings("unchecked")
+        final Stream<T> emptyStream = (Stream<T>) Lazy.EMPTY_STREAM;
+        return emptyStream;
     }
 }

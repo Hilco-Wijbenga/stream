@@ -4,11 +4,9 @@ import java.io.File;
 
 public interface StreamApi
 {
-    <T> Stream<T> newInfiniteStreamOf(T element);
+    <T> Stream<T> newStreamFromIterable(Iterable<T> iterable);
 
-    <T> Stream<T> newSingletonStream(T element);
+    Stream<Line> newStreamFromTextFile(File textFile);
 
-    <T> Stream<T> newIterableStream(Iterable<T> iterable);
-
-    Stream<Line> newTextFileStream(File textFile);
+    <T> Stream<T> newEmptyStream();
 }

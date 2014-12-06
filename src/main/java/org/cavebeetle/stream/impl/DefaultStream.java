@@ -60,12 +60,6 @@ public final class DefaultStream<T>
     }
 
     @Override
-    public <U> Stream<U> map(final Stream.Map<T, U> map)
-    {
-        return new DefaultStream<U>(new MappedStreamState<T, U>(this, map));
-    }
-
-    @Override
     public Stream<T> concatenate(final Stream<T> stream)
     {
         return new DefaultStream<T>(new ConcatenatedStreamState<T>(this, stream));

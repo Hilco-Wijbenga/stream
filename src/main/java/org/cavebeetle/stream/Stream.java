@@ -4,11 +4,6 @@ public interface Stream<T>
     extends
         Iterable<T>
 {
-    public interface Map<IN, OUT>
-    {
-        OUT map(IN element);
-    }
-
     T head();
 
     Stream<T> tail();
@@ -16,8 +11,6 @@ public interface Stream<T>
     boolean isEmpty();
 
     void abort();
-
-    <U> Stream<U> map(Map<T, U> map);
 
     Stream<T> concatenate(Stream<T> stream);
 

@@ -1,34 +1,28 @@
 package org.cavebeetle.stream.impl;
 
+import org.cavebeetle.stream.EmptyStreamException;
 import org.cavebeetle.stream.StreamState;
 
-public final class InfiniteStreamState<T>
+public final class EmptyStreamState<T>
     implements
         StreamState<T>
 {
-    private final T element;
-
-    public InfiniteStreamState(final T element)
-    {
-        this.element = element;
-    }
-
     @Override
     public T head()
     {
-        return element;
+        throw new EmptyStreamException();
     }
 
     @Override
     public StreamState<T> tail()
     {
-        return this;
+        throw new EmptyStreamException();
     }
 
     @Override
     public boolean isEmpty()
     {
-        return false;
+        return true;
     }
 
     @Override
